@@ -1,0 +1,9 @@
+.body {
+    background: url("https://fondosmil.com/fondo/591.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+    background-color: lightgoldenrodyellow;
+    min-height: 100vh;
+}
