@@ -1,0 +1,43 @@
+#artworks {
+    border-radius: 0.25rem;
+    margin-right: 10%;
+    margin-left: 10%;
+    background-color: #212529 !important;
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px 20px;;
+}
+
+#artworks .card {
+    border: none;
+    background: #fff;
+}
+
+.card_artwork {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    z-index: 2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card_artwork .card {
+    min-height: 312px;
+}
+
+.card-title {
+    cursor: pointer;
+}
+
+.card-text {
+    margin: 10px auto;
+    padding: 5px;
+    font: normal 13px arial, helvetica, sans-serif;
+    text-align: left;
+}
+
+p#text {
+    white-space: normal;
+}

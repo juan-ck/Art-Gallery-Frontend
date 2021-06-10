@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header text-center">
+                    <h3>Agregar Categoria de Obra</h3>
+                </div>
+                <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                    <div class="form-group" style="padding:10px;">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+                    </div>
+                    
+                </form>
+                <div class="card-footer">
+                    <button class="btn btn-outline-success btn-block" [disabled]="!f.valid" (click)="onCreate()">
+                        <i class="fas fa-plus-circle"></i> Crear</button>
+                    <button class="btn btn-outline-primary btn-block" routerLink="/lista-categoria">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

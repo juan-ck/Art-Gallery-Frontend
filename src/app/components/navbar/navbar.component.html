@@ -1,32 +1,69 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/">{{appName}}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLink="/add">Add</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/user/register">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/user/profile">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/admin/list">List Artworks</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/user/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#">{{appName}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/"><i class="fas fa-home"></i> Inicio</a>
+      </li>
+      <li ngbDropdown class="nav-item dropdown" *ngIf="isLogged && isAdmin" >
+        <a ngbDropdownToggle class="nav-link dropdown-toggle"><i class="fab fa-buffer"></i> Obras</a>
+        <ul ngbDropdownMenu class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+          <li>
+            <a class="dropdown-item" href="/lista">
+              <i class="far fa-list-alt"></i>Listado
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/lista-tipo">
+              <i class="far fa-list-alt"></i>Tipos
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/lista-categoria">
+              <i class="far fa-list-alt"></i>Categorias
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/lista-disponibilidad">
+              <i class="far fa-list-alt"></i>Disponibilidad
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item" *ngIf="isLogged && !isAdmin">
+        <a class="nav-link" routerLink="/lista"><i class="far fa-list-alt"></i> Obras</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged && !isAdmin">
+        <a class="nav-link" routerLink="/lista-tipo"><i class="far fa-list-alt"></i> Tipo de Obras</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged && isAdmin">
+        <a class="nav-link" routerLink="/lista-tipo"><i class="fas fa-user"></i> Autor</a>
+      </li>
+      <li ngbDropdown class="nav-item dropdown" *ngIf="isLogged" >
+        <a ngbDropdownToggle class="nav-link dropdown-toggle"><i class="fas fa-user"></i> MI Perfil</a>
+        
+        <ul ngbDropdownMenu class="dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+          <li *ngIf="isLogged && isAdmin">
+            <a class="dropdown-item" href="/lista">
+              <i class="fas fa-chart-line"></i>Detalles
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/lista-tipo">
+              <i class="fas fa-cog"></i>Configuración
+            </a>
+          </li>
+          <li class="dropdown-item" *ngIf="isLogged" (click)="onLogOut()">
+            <a class="nav-link" style="cursor: pointer;"><i class="fas fa-door-open" ></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item" *ngIf="!isLogged">
+        <a class="nav-link"  routerLink="/login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
